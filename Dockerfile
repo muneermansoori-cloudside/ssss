@@ -10,7 +10,7 @@ EXPOSE 80
 #MAINTAINER ian.miell@gmail.com
 
 #RUN - Runs a command in the container
-RUN echo "Hello muneer" > /var/www/html/index.html
+RUN echo "Hello muneer Welcome" > /var/www/html/index.html
 
 #CMD - Identifies the command that should be used by default when running the image as a container.
 #CMD ["cat", "/tmp/hello_world.txt"]
