@@ -4,7 +4,7 @@ FROM ubuntu:14.04
 #RUN sudo apt-get install apache2
 RUN apt-get update && apt-get install -y apache2
 EXPOSE 80
-
+RUN apt-get install git
 
 #MAINTAINER - Identifies the maintainer of the dockerfile.
 #MAINTAINER ian.miell@gmail.com
