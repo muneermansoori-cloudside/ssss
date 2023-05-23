@@ -1,21 +1,19 @@
-#FROM - Image to start building on.
-FROM ubuntu:14.04
-#RUN sudo apt-get  update
-#RUN sudo apt-get install apache2
-RUN apt-get update && apt-get install -y apache2
-EXPOSE 80
-RUN apt-get install git -y
-RUN apt-get install gettext-base -y
+FROM node:16
 
-#MAINTAINER - Identifies the maintainer of the dockerfile.
-#MAINTAINER ian.miell@gmail.com
+# Create app directory
+WORKDIR /usr/src/app
 
-#RUN - Runs a command in the container
-RUN echo "Hello muneer Welcome" > /var/www/html/index.html
+# Install app dependencies
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+# where available (npm@5+)
+COPY package*.json ./
 
-#CMD - Identifies the command that should be used by default when running the image as a container.
-#CMD ["cat", "/tmp/hello_world.txt"]
-#CMD ["sleep", "30"]
-#CMD ["echo", "it's updated"]
-CMD ["apache2ctl", "-D", "FOREGROUND"]
-#CMD ["date  "]
+RUN npm install
+# If you are building your code for production
+# RUN npm ci --omit=dev
+
+# Bundle app source
+COPY . .
+
+EXPOSE 8080
+CMD [ "node", "server.js" ]
