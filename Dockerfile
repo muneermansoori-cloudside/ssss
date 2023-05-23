@@ -13,8 +13,8 @@ EXPOSE 80
 RUN echo "Hello muneer" > /var/www/html/index.html
 
 #CMD - Identifies the command that should be used by default when running the image as a container.
-CMD ["cat", "/tmp/hello_world.txt"]
-CMD ["sleep", "30"]
+#CMD ["cat", "/tmp/hello_world.txt"]
+#CMD ["sleep", "30"]
 #CMD ["echo", "it's updated"]
 CMD ["apache2ctl", "-D", "FOREGROUND"]
 #CMD ["date"]
